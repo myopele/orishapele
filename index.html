@@ -1,0 +1,494 @@
+<!-- =========================================================
+SGI — Orisha Pele: Beyond Yes/No Divination (5-Week Course)
+Single-file HTML (static). Works on GitHub Pages / Cloudflare Pages.
+Put this file in the SAME folder as: SwamiG.gif
+File: orisha-pele-5week.html
+========================================================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <title>SwamiG Institute — Orisha Pele: Beyond Yes/No Divination (5-Week Course)</title>
+  <meta name="description" content="SwamiG Institute (SGI) — Orisha Pele: Beyond Yes/No Divination — a 5-week course progressing from Four-Cowrie fundamentals to Orisha Pele interpretation and certification." />
+
+  <style>
+    :root{
+      --bg:#0b0b0f; --ink:#f3f4f6; --muted:#bfc3d1;
+      --card:rgba(20,20,28,.92); --soft:rgba(255,255,255,.06);
+      --border:rgba(255,255,255,.12);
+      --accent:#bb66ff; --accent2:#ffd166;
+      --ring:rgba(187,102,255,.35);
+      --ok:#4ade80; --warn:#fbbf24; --bad:#fb7185;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:
+        radial-gradient(900px 500px at 20% -10%, rgba(187,102,255,.25), transparent 60%),
+        radial-gradient(900px 500px at 80% 0%, rgba(255,209,102,.16), transparent 60%),
+        radial-gradient(900px 600px at 50% 110%, rgba(74,222,128,.10), transparent 60%),
+        var(--bg);
+      color:var(--ink);
+      font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+    }
+
+    a{color:inherit}
+    .wrap{max-width:1120px; margin:0 auto; padding:28px 18px 70px}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      padding:10px 12px; border:1px solid var(--border); background:rgba(0,0,0,.22);
+      border-radius:16px; box-shadow: 0 8px 30px rgba(0,0,0,.25);
+      position:sticky; top:12px; z-index:10; backdrop-filter: blur(10px);
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; min-width:240px;
+    }
+    .brand img{
+      width:40px; height:40px; border-radius:10px;
+      border:1px solid var(--border); background:rgba(255,255,255,.06);
+      object-fit:cover;
+      box-shadow: 0 0 0 6px rgba(187,102,255,.08);
+    }
+    .brand b{letter-spacing:.2px}
+    .brand small{display:block; color:var(--muted); margin-top:1px}
+    .nav{
+      display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end;
+    }
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px; border-radius:999px;
+      border:1px solid var(--border); background:rgba(255,255,255,.04);
+      text-decoration:none;
+      transition:transform .12s ease, background .12s ease, border-color .12s ease;
+      font-size:13px; color:var(--muted);
+    }
+    .chip:hover{transform:translateY(-1px); background:rgba(255,255,255,.07); border-color:rgba(255,255,255,.18); color:var(--ink)}
+    .chip .dot{
+      width:9px; height:9px; border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 0 4px rgba(187,102,255,.15);
+    }
+
+    header.hero{
+      margin-top:18px;
+      display:grid; grid-template-columns: 1.25fr .75fr; gap:16px;
+      align-items:stretch;
+    }
+    .card{
+      border:1px solid var(--border);
+      background:var(--card);
+      border-radius:22px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .heroMain{padding:22px 22px 18px}
+    .kicker{
+      display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:12px;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:7px 10px; border-radius:999px;
+      border:1px solid var(--border); background:rgba(255,255,255,.05);
+      color:var(--muted); font-size:13px;
+    }
+    .pill strong{color:var(--ink); font-weight:700}
+    h1{
+      margin:8px 0 8px;
+      font-size: clamp(26px, 3.2vw, 40px);
+      line-height:1.12;
+      letter-spacing:-.4px;
+    }
+    .sub{
+      color:var(--muted);
+      font-size:15px;
+      margin:0 0 14px;
+      max-width:70ch;
+    }
+    .ctaRow{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background:linear-gradient(180deg, rgba(187,102,255,.22), rgba(187,102,255,.08));
+      color:var(--ink);
+      text-decoration:none;
+      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+      transition:transform .12s ease, filter .12s ease, border-color .12s ease;
+      font-weight:700;
+    }
+    .btn:hover{transform:translateY(-1px); filter:brightness(1.05); border-color:rgba(255,255,255,.22)}
+    .btn.secondary{
+      background:rgba(255,255,255,.05);
+      color:var(--muted);
+      font-weight:650;
+      box-shadow:none;
+    }
+    .btn.secondary:hover{color:var(--ink)}
+    .heroSide{padding:18px}
+    .heroSide h3{margin:0 0 10px; font-size:16px}
+    .list{margin:0; padding-left:18px; color:var(--muted)}
+    .list li{margin:8px 0}
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px; border-radius:999px;
+      border:1px solid var(--border); background:rgba(255,255,255,.04);
+      color:var(--muted); font-size:13px;
+    }
+    .badge .ok{width:10px; height:10px; border-radius:50%; background:var(--ok); box-shadow:0 0 0 4px rgba(74,222,128,.14)}
+    .grid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:16px;
+    }
+    .span-7{grid-column: span 7}
+    .span-5{grid-column: span 5}
+    .span-12{grid-column: span 12}
+
+    section .hd{
+      padding:18px 20px 10px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      display:flex; flex-wrap:wrap; gap:10px; align-items:baseline; justify-content:space-between;
+    }
+    section .hd h2{margin:0; font-size:18px}
+    section .bd{padding:16px 20px 20px}
+    .note{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.18);
+      padding:12px 12px;
+      border-radius:16px;
+      color:var(--muted);
+    }
+
+    .table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:16px;
+    }
+    .table th, .table td{
+      padding:12px 12px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      text-align:left;
+      vertical-align:top;
+    }
+    .table th{
+      font-size:12px;
+      letter-spacing:.2px;
+      text-transform:uppercase;
+      color:var(--muted);
+      background:rgba(255,255,255,.04);
+    }
+    .table tr:last-child td{border-bottom:none}
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px; border-radius:999px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.12);
+      color:var(--muted);
+      font-size:13px;
+      white-space:nowrap;
+    }
+    .tag .ring{
+      width:10px; height:10px; border-radius:50%;
+      background:var(--accent2);
+      box-shadow:0 0 0 4px rgba(255,209,102,.14);
+    }
+
+    .week{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.03);
+      border-radius:18px;
+      padding:14px 14px 12px;
+      margin:10px 0;
+    }
+    .week h3{margin:0 0 6px; font-size:16px}
+    .week p{margin:0; color:var(--muted)}
+    .week ul{margin:10px 0 0; padding-left:18px; color:var(--muted)}
+    .week li{margin:6px 0}
+    .wkBadge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.20);
+      color:var(--muted);
+      font-size:12px;
+      margin-left:8px;
+    }
+    .wkBadge b{color:var(--ink)}
+    footer{
+      margin-top:18px;
+      color:var(--muted);
+      text-align:center;
+      font-size:12px;
+      opacity:.9;
+    }
+    .fineprint{
+      max-width:950px;
+      margin:0 auto;
+      padding:14px 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(0,0,0,.18);
+      border-radius:16px;
+    }
+
+    @media (max-width: 920px){
+      header.hero{grid-template-columns:1fr}
+      .span-7,.span-5{grid-column: span 12}
+      .brand{min-width:auto}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <!-- Sticky Topbar -->
+    <div class="topbar">
+      <div class="brand" aria-label="SwamiG Institute brand">
+        <a href="#top" title="Back to top" style="display:inline-flex;align-items:center;gap:12px;text-decoration:none;">
+          <img src="SwamiG.gif" alt="SwamiG Institute (SGI) logo" />
+          <div>
+            <b>SwamiG Institute</b>
+            <small>Orisha Pele • 5-Week Course</small>
+          </div>
+        </a>
+      </div>
+
+      <nav class="nav" aria-label="Page navigation">
+        <a class="chip" href="#overview"><span class="dot"></span>Overview</a>
+        <a class="chip" href="#prereq"><span class="dot"></span>Prerequisites</a>
+        <a class="chip" href="#framework"><span class="dot"></span>4-Cowrie Framework</a>
+        <a class="chip" href="#weeks"><span class="dot"></span>Weekly Modules</a>
+        <a class="chip" href="#cert"><span class="dot"></span>Certification</a>
+      </nav>
+    </div>
+
+    <!-- Hero -->
+    <header id="top" class="hero">
+      <div class="card heroMain">
+        <div class="kicker">
+          <span class="pill"><strong>Orisha Pele</strong> • Beyond Yes/No Divination</span>
+          <span class="pill">5-Week Course</span>
+          <span class="badge"><span class="ok"></span> SGI Track • Practice + Competency</span>
+        </div>
+        <h1>Orisha Pele: Beyond Yes/No Divination</h1>
+        <p class="sub">
+          A focused 5-week training designed to move the student from Four-Cowrie fundamentals
+          into <b>Orisha Pele divination</b>, layered interpretation, and a clear pathway to certification.
+        </p>
+        <div class="ctaRow">
+          <a class="btn" href="#weeks" title="Jump to weekly modules">View the 5 Weeks</a>
+          <a class="btn secondary" href="#prereq" title="See requirements">See prerequisites</a>
+        </div>
+      </div>
+
+      <aside class="card heroSide">
+        <h3>What this course builds</h3>
+        <ul class="list">
+          <li>Stronger casting discipline (structure, sequence, verification)</li>
+          <li>Transition from “yes/no” to <b>nuanced outcomes</b> and layered meaning</li>
+          <li>Working vocabulary: Four-Cowrie names + Orisha Pele expansions</li>
+          <li>Weekly live integration (Zoom) + documented practice</li>
+          <li>Clear finish: competency review + certification ceremony</li>
+        </ul>
+        <div style="margin-top:12px">
+          <span class="tag"><span class="ring"></span> © 2026 SwamiG Institute</span>
+        </div>
+      </aside>
+    </header>
+
+    <div class="grid">
+      <!-- Overview -->
+      <section id="overview" class="card span-7">
+        <div class="hd">
+          <h2>Course Overview</h2>
+          <span class="pill">SwamiG Institute • 501(c)(3)</span>
+        </div>
+        <div class="bd">
+          <p class="note">
+            This curriculum advances the student <b>beyond basic yes/no divination</b>.
+            Four-Cowrie work establishes the foundation language and discipline; Orisha Pele extends
+            that foundation into deeper interpretive movement and applied reading.
+          </p>
+          <p style="color:var(--muted); margin:12px 0 0;">
+            <b>Outcome:</b> a student who can cast, interpret, and communicate results with structure,
+            clarity, and competency — culminating in certification completion.
+          </p>
+        </div>
+      </section>
+
+      <!-- Prerequisites -->
+      <section id="prereq" class="card span-5">
+        <div class="hd">
+          <h2>Prerequisites</h2>
+          <span class="pill">Readiness checklist</span>
+        </div>
+        <div class="bd">
+          <ol class="list">
+            <li><b>Four-Cowrie Shell Divination</b> experience</li>
+            <li><b>30 days</b> minimum practice</li>
+            <li>Dedicated <b>casting surface</b></li>
+            <li>Ability to attend <b>weekly Zoom</b></li>
+            <li>Access to <b>Orisha Pele implements</b></li>
+            <li>Commitment to <b>certification</b></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Framework -->
+      <section id="framework" class="card span-12">
+        <div class="hd">
+          <h2>Four-Cowrie Shell Framework</h2>
+          <span class="pill">Foundation language • 5 possibilities</span>
+        </div>
+        <div class="bd">
+          <p style="margin-top:0;color:var(--muted);">
+            The course uses the Four-Cowrie naming framework as the baseline. These states are the
+            structural “anchor” for Orisha Pele expansions.
+          </p>
+
+          <table class="table" aria-label="Four-Cowrie core states">
+            <thead>
+              <tr>
+                <th style="width:110px;">Open</th>
+                <th>Name</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tag"><span class="ring"></span><b>4</b></span></td>
+                <td><b>Ogbe</b></td>
+                <td>Core reference state (foundation for Week 1)</td>
+              </tr>
+              <tr>
+                <td><span class="tag"><span class="ring"></span><b>3</b></span></td>
+                <td><b>Etawa</b></td>
+                <td>Core reference state (foundation for Week 1)</td>
+              </tr>
+              <tr>
+                <td><span class="tag"><span class="ring"></span><b>2</b></span></td>
+                <td><b>Ejife</b></td>
+                <td>Core reference state (foundation for Week 2)</td>
+              </tr>
+              <tr>
+                <td><span class="tag"><span class="ring"></span><b>1</b></span></td>
+                <td><b>Okana</b></td>
+                <td>Core reference state (foundation for Week 3)</td>
+              </tr>
+              <tr>
+                <td><span class="tag"><span class="ring"></span><b>0</b></span></td>
+                <td><b>Oyeku</b></td>
+                <td>Core reference state (foundation for Week 4–5 integration)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="note" style="margin-top:14px;">
+            <b>Key idea:</b> Four Cowries establish <b>structure</b>. Orisha Pele reveals <b>movement</b>,
+            nuance, and layered outcomes.
+          </div>
+        </div>
+      </section>
+
+      <!-- Weekly Modules -->
+      <section id="weeks" class="card span-12">
+        <div class="hd">
+          <h2>Weekly Modules (5 Weeks)</h2>
+          <span class="pill">Live Zoom + documented practice</span>
+        </div>
+        <div class="bd">
+          <div class="week">
+            <h3>Week 1 <span class="wkBadge"><b>Foundation</b> • Ogbe + Etawa</span></h3>
+            <p>Orientation and transition from “yes/no” into expanded interpretive language.</p>
+            <ul>
+              <li><b>Ogbe</b> (core anchor)</li>
+              <li><b>Etawa</b> (core anchor)</li>
+              <li>Etawa expansions: <b>Obita</b>, <b>Akita</b></li>
+            </ul>
+          </div>
+
+          <div class="week">
+            <h3>Week 2 <span class="wkBadge"><b>Expansion</b> • Ejife</span></h3>
+            <p>Stability themes, pattern recognition, and building interpretive confidence.</p>
+            <ul>
+              <li><b>Ejife</b> (core anchor)</li>
+              <li>Ejife expansions: <b>Ejire</b>, <b>Akoran</b>, <b>Eros</b></li>
+            </ul>
+          </div>
+
+          <div class="week">
+            <h3>Week 3 <span class="wkBadge"><b>Application</b> • Okana</span></h3>
+            <p>Material/health axes and practical reading structure.</p>
+            <ul>
+              <li><b>Okana</b> (core anchor)</li>
+              <li>Okana expansions: <b>Aje</b>, <b>Ilera</b></li>
+            </ul>
+          </div>
+
+          <div class="week">
+            <h3>Week 4 <span class="wkBadge"><b>Synthesis</b> • Oyeku</span></h3>
+            <p>Deeper interpretation: transformation, closure, and continuity.</p>
+            <ul>
+              <li><b>Oyeku</b> (core anchor)</li>
+              <li>Combining prior weeks into coherent outcomes</li>
+              <li>Refining language: clarity + responsibility</li>
+            </ul>
+          </div>
+
+          <div class="week">
+            <h3>Week 5 <span class="wkBadge"><b>Integration</b> • Full Flow</span></h3>
+            <p>Complete casting flow, communication practice, and readiness review.</p>
+            <ul>
+              <li>Full-cycle casting practice (start → interpret → conclude)</li>
+              <li>Applied readings + instructor feedback</li>
+              <li>Preparation for certification competency</li>
+            </ul>
+          </div>
+
+          <div class="note" style="margin-top:14px;">
+            <b>Suggestion:</b> Keep a practice log each week (date, question, cast result, meaning, action).
+            This supports evaluation and strengthens your interpretive discipline.
+          </div>
+        </div>
+      </section>
+
+      <!-- Certification -->
+      <section id="cert" class="card span-12">
+        <div class="hd">
+          <h2>Certification Completion</h2>
+          <span class="pill">Competency + Ceremony</span>
+        </div>
+        <div class="bd">
+          <p class="note" style="margin-top:0;">
+            Successful completion includes a <b>Certification Competency Ceremony</b>.
+            Students demonstrate practical casting, interpretation, and responsible communication.
+          </p>
+          <ul class="list">
+            <li>Demonstrate consistent casting process</li>
+            <li>Accurately identify core states + expansions</li>
+            <li>Present a structured reading (clear + grounded)</li>
+            <li>Show ethical boundaries and appropriate next steps</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <div class="fineprint">
+        <div><b>SwamiG Institute</b> • Orisha Pele: Beyond Yes/No Divination (5-Week Course)</div>
+        <div style="margin-top:6px;">
+          © 2026 SwamiG Institute. Educational curriculum outline for training and certification.
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
