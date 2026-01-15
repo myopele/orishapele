@@ -1,0 +1,616 @@
+<!-- =========================================================
+SGI — Divination Mini Series
+Obi Pele (Novice) — "Beyond 4-Cowries"
+Single-file HTML (static). Works on GitHub Pages / Cloudflare Pages.
+File: sgi-obi-pepe-beyond-4cowries.html
+
+Notes:
+- Put this file in the SAME folder as: SwamiG.gif  (SGI logo)
+- Optional: add favicon.png in same folder (or remove favicon line)
+- "Apply" button links to your Google Form:
+  https://forms.gle/YroX3UXTAwqzE1xS7
+========================================================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#0b0b0f" />
+  <title>SwamiG Institute — Obi Pele (Novice) | Beyond 4-Cowries</title>
+  <meta name="description" content="SwamiG Institute (SGI) — Obi Pele (Novice) Divination Mini Course: Beyond 4-Cowries. 3-week, 6-module training with daily castings, weekly Zoom, and certification eligibility." />
+  <meta name="robots" content="index,follow" />
+  <link rel="icon" href="favicon.png" />
+
+  <style>
+    :root{
+      --bg:#0b0b0f; --ink:#f3f4f6; --muted:#bfc3d1;
+      --card:rgba(20,20,28,.92); --soft:rgba(255,255,255,.06);
+      --border:rgba(255,255,255,.12);
+      --accent:#bb66ff; --accent2:#ffd166;
+      --ok:#4ade80; --warn:#fbbf24; --bad:#fb7185;
+      --ring:rgba(187,102,255,.35);
+      --shadow: 0 18px 50px rgba(0,0,0,.45);
+      --radius: 18px;
+      --max: 1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1100px 700px at 18% 12%, rgba(187,102,255,.18), transparent 55%),
+        radial-gradient(900px 650px at 85% 18%, rgba(255,209,102,.14), transparent 55%),
+        radial-gradient(900px 650px at 55% 90%, rgba(74,222,128,.10), transparent 55%),
+        var(--bg);
+      color:var(--ink);
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;
+      letter-spacing:.1px;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:18px 16px 64px}
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(11,11,15,.88), rgba(11,11,15,.60));
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+    .bar{
+      max-width:var(--max); margin:0 auto; padding:12px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; min-width:220px;
+    }
+    .logo{
+      width:44px; height:44px; border-radius:12px;
+      display:grid; place-items:center;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow: 0 0 0 6px rgba(187,102,255,.10);
+      overflow:hidden;
+    }
+    .logo img{width:100%; height:100%; object-fit:cover; display:block}
+    .brand h1{
+      margin:0; font-size:14px; letter-spacing:.4px; font-weight:700;
+    }
+    .brand p{
+      margin:0; font-size:12px; color:var(--muted);
+    }
+    nav{
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      text-decoration:none;
+      font-size:13px;
+      color:var(--ink);
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .pill:hover{transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.22)}
+    .pill:active{transform: translateY(0)}
+    .apply{
+      background: linear-gradient(135deg, rgba(187,102,255,.28), rgba(255,209,102,.20));
+      border-color: rgba(255,255,255,.22);
+      box-shadow: 0 10px 30px rgba(187,102,255,.18);
+      font-weight:800;
+    }
+
+    .hero{padding:26px 0 10px}
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    @media (max-width: 920px){
+      .heroGrid{grid-template-columns:1fr}
+      .brand{min-width:auto}
+    }
+    .card{
+      background: var(--card);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(400px 240px at 20% 0%, rgba(187,102,255,.22), transparent 55%),
+                  radial-gradient(420px 260px at 90% 10%, rgba(255,209,102,.16), transparent 55%);
+      opacity:.85; pointer-events:none;
+    }
+    .card > *{position:relative; z-index:1}
+    .kicker{
+      display:inline-flex; gap:10px; align-items:center;
+      font-size:12px; letter-spacing:.18em; text-transform:uppercase;
+      color:var(--muted);
+    }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(187,102,255,.14);
+    }
+    h2{margin:10px 0 6px; font-size:30px; line-height:1.15}
+    .sub{margin:0; color:var(--muted); max-width:70ch}
+    .ctaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:11px 14px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      text-decoration:none;
+      font-weight:700;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.24)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(187,102,255,.34), rgba(255,209,102,.20));
+      border-color: rgba(255,255,255,.24);
+    }
+
+    .miniGrid{
+      display:grid; gap:12px;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top:12px;
+    }
+    @media (max-width: 920px){ .miniGrid{grid-template-columns:1fr} }
+    .mini{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      border-radius: 16px;
+      padding:14px;
+    }
+    .mini h3{margin:0 0 6px; font-size:14px}
+    .mini p{margin:0; color:var(--muted); font-size:13px}
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:12px; color:var(--muted);
+      margin-top:8px;
+    }
+    .tag b{color:var(--ink)}
+
+    .grid{
+      margin-top:16px;
+      display:grid; gap:14px;
+      grid-template-columns: 1fr 1fr;
+      align-items:start;
+    }
+    @media (max-width: 920px){ .grid{grid-template-columns:1fr} }
+    .sectionTitle{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      margin:0 0 10px;
+    }
+    .sectionTitle h3{margin:0; font-size:16px}
+    .sectionTitle span{font-size:12px; color:var(--muted)}
+    ul{margin:10px 0 0; padding-left:18px; color:var(--muted)}
+    li{margin:6px 0}
+    ol{margin:10px 0 0; padding-left:18px; color:var(--muted)}
+    .weeks{display:grid; gap:12px}
+    .week{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      border-radius: 16px;
+      padding:14px;
+    }
+    .week h4{margin:0 0 8px; font-size:14px}
+    .badgeRow{display:flex; gap:8px; flex-wrap:wrap; margin:6px 0 10px}
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      font-size:12px;
+      color:var(--muted);
+    }
+    .badge.ok b{color:var(--ok)}
+    .badge.warn b{color:var(--warn)}
+    .badge.bad b{color:var(--bad)}
+    .muted{color:var(--muted)}
+    .hr{height:1px; background: rgba(255,255,255,.10); margin:14px 0}
+    .note{
+      font-size:12px; color:var(--muted);
+      border-left: 3px solid rgba(187,102,255,.55);
+      padding:10px 12px;
+      background: rgba(187,102,255,.08);
+      border-radius: 12px;
+    }
+    .topAnchor{scroll-margin-top: 90px}
+
+    /* Intro formatting helpers */
+    .lead{color:var(--muted); margin:0; max-width:85ch}
+    .twoCol{
+      display:grid; gap:14px;
+      grid-template-columns: 1.1fr .9fr;
+      align-items:start;
+    }
+    @media (max-width: 920px){ .twoCol{grid-template-columns:1fr} }
+    .tableWrap{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      border-radius: 16px;
+      overflow:hidden;
+    }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:13px;
+    }
+    th,td{
+      padding:10px 12px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+      vertical-align:top;
+    }
+    th{color:var(--ink); text-align:left; background: rgba(255,255,255,.05)}
+    tr:last-child td{border-bottom:none}
+    .small{font-size:12px; color:var(--muted)}
+    footer{
+      margin-top:22px;
+      color:var(--muted);
+      font-size:12px;
+      text-align:center;
+      opacity:.9;
+    }
+    .fine{opacity:.85}
+
+    /* ===== Branded Glow Accents ===== */
+    .glow-mission{box-shadow: 0 0 0 rgba(187,102,255,0)}
+    .glow-mission:hover{box-shadow: 0 0 18px rgba(187,102,255,.45)}
+    .glow-obipele{box-shadow: 0 0 0 rgba(255,209,102,0)}
+    .glow-obipele:hover{box-shadow: 0 0 18px rgba(255,209,102,.45)}
+    .glow-ilekes{box-shadow: 0 0 0 rgba(74,222,128,0)}
+    .glow-ilekes:hover{box-shadow: 0 0 18px rgba(74,222,128,.45)}
+    .glow-warriors{box-shadow: 0 0 0 rgba(251,113,133,0)}
+    .glow-warriors:hover{box-shadow: 0 0 18px rgba(251,113,133,.45)}
+  </style>
+</head>
+
+<body>
+  <!-- Sticky Header -->
+  <header>
+    <div class="bar">
+      <div class="brand">
+        <!-- Clickable SGI logo -->
+        <a class="logo" href="https://swamiginstitute.com" aria-label="SwamiG Institute Home">
+          <img src="SwamiG.gif" alt="SwamiG Institute Logo" />
+        </a>
+        <div>
+          <h1>SwamiG Institute</h1>
+          <p>Divination Mini Series • Obi Pele (Novice)</p>
+        </div>
+      </div>
+
+      <!-- FIXED + COMPLETE NAV -->
+      <nav aria-label="Top navigation">
+        <a class="pill glow-mission" href="https://swamiginstitute.com/missionsgi/" target="_blank" rel="noopener">SGI Mission</a>
+        <a class="pill glow-obipele" href="https://obipele.com" target="_blank" rel="noopener">ObiPele</a>
+        <a class="pill glow-ilekes" href="https://myilekes.com" target="_blank" rel="noopener">My Ilekes</a>
+        <a class="pill glow-warriors" href="https://warriors2026.com" target="_blank" rel="noopener">Warriors 2026</a>
+        <a class="pill apply" href="https://forms.gle/YroX3UXTAwqzE1xS7" target="_blank" rel="noopener">Apply</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero topAnchor" id="overview">
+      <div class="heroGrid">
+        <div class="card">
+          <div class="kicker"><span class="dot"></span> 3-Week Mini Course • 6 Modules • Weekly Zoom</div>
+          <h2>“Beyond 4-Cowries”<br><span class="muted">Obi Pele Divination (Novice)</span></h2>
+          <p class="sub">
+            A structured introduction to Obi-based divination that bridges foundational 4-cowrie outcomes
+            into Obi Abata / Obi Pele patterns, ethics, question framing, and certification readiness.
+          </p>
+
+          <div class="ctaRow">
+            <a class="btn primary" href="https://forms.gle/YroX3UXTAwqzE1xS7" target="_blank" rel="noopener">Apply Now</a>
+            <a class="btn" href="#intro">Obi Pele Introduction</a>
+            <a class="btn" href="#weeks">See Weekly Plan</a>
+            <a class="btn" href="#cert">Certification</a>
+          </div>
+
+          <div class="miniGrid" aria-label="Quick facts">
+            <div class="mini">
+              <h3>Practice-First</h3>
+              <p>Daily documented castings (photo + written findings) with feedback.</p>
+              <div class="tag">✅ <b>Daily</b> casting habit</div>
+            </div>
+            <div class="mini">
+              <h3>Weekly Zoom</h3>
+              <p>Guided instruction, review, and Q&A each week.</p>
+              <div class="tag">📍 <b>Weekly</b> live session</div>
+            </div>
+            <div class="mini">
+              <h3>Novice Track</h3>
+              <p>Designed to build reliable basics + ethical interpretation.</p>
+              <div class="tag">🎓 <b>Eligibility</b> for certification</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT CARD -->
+        <div class="card" id="modules">
+          <div class="sectionTitle">
+            <h3>6 Core Modules</h3>
+            <span>Course map</span>
+          </div>
+
+          <ol class="muted">
+            <li><b style="color:var(--ink)">Introduction</b> — orientation & expectations</li>
+            <li><b style="color:var(--ink)">4-Cowrie System</b> — meanings, patterns, use-cases</li>
+            <li><b style="color:var(--ink)">Obi Abata / Obi Pele</b> — attachments, elements, patterns</li>
+            <li><b style="color:var(--ink)">Deities (Orisha)</b> — spiritual context and influences</li>
+            <li><b style="color:var(--ink)">Questions</b> — framing, ethics, clarity & follow-ups</li>
+            <li><b style="color:var(--ink)">Summary</b> — readiness + certification eligibility</li>
+          </ol>
+
+          <div class="hr"></div>
+
+          <div class="note">
+            <b>Training rhythm:</b> cast daily • document outcomes • submit findings • review live on Zoom.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="card topAnchor" id="intro" style="margin-top:14px">
+      <div class="sectionTitle">
+        <h3>Obi Pele Introduction</h3>
+        <span>orientation • limits • naming</span>
+      </div>
+
+      <p class="lead">
+        There is benefit to those that receive Aborisha initiations to have access to the divine.
+        This access, while always present, may be obscured by ego, doubt, negative energies,
+        ancestors, or other spiritual / energetic provocateurs. Fundamental divination systems
+        exist to provide insight to basic <b>yes-or-no</b> questions within clear limits.
+      </p>
+
+      <div class="hr"></div>
+
+      <div class="twoCol" aria-label="Introduction content grid">
+        <div>
+          <div class="sectionTitle" style="margin-top:0">
+            <h3>Limits of Questioning</h3>
+            <span>ethics-first</span>
+          </div>
+          <ul>
+            <li><b>Yes/No questions only.</b></li>
+            <li>Avoid questions that have known answers.</li>
+            <li>Minimize illegal, immoral, or unethical questions.</li>
+            <li>Refrain from asking the same question twice.</li>
+            <li>Questions that harm self, others, or the environment are off-limits.</li>
+            <li>Questions about oneself are encouraged.</li>
+          </ul>
+
+          <div class="hr"></div>
+
+          <div class="sectionTitle" style="margin-top:0">
+            <h3>From 4-Cowrie to Obi Abata</h3>
+            <span>system evolution</span>
+          </div>
+          <p class="lead">
+            After Aborisha initiations, it is common to receive <b>4 cowries</b> as a first implement
+            for divination. The Four Cowrie Divination System—with its families of possibilities—is
+            profound enough to extend throughout the life of even a very blessed and hardworking Aborisha.
+            In some settings, an alternate level of divination is the <b>Obi Abata</b>, using fresh nuts
+            (split and cast) as an introduction to an alternate or sometimes primary divination system.
+          </p>
+
+          <p class="lead" style="margin-top:10px">
+            In the African diaspora, the nuts may be imported away from their energetic source.
+            Over time, Obi systems evolved to meet Aborisha needs. One such evolution is <b>Obi Pele</b>:
+            a divination system comprised of four elements affixed with two pairs of attachments—extending
+            the familiar outcome families into broader domains of influence used in Obi Abata-style divination.
+          </p>
+        </div>
+
+        <div>
+          <div class="sectionTitle" style="margin-top:0">
+            <h3>Naming Convention</h3>
+            <span>Obi Pele identity</span>
+          </div>
+
+          <p class="lead">
+            When presented to an Aborisha, the implement may be renamed after the initiate’s name.
+            The implement in general is referred to as <b>Obi Pele</b>, while in the hands of an Aborisha
+            it may be referred to as <b>Obi “Aborisha Name”</b>.
+          </p>
+
+          <div class="tableWrap" style="margin-top:12px">
+            <table aria-label="Obi naming examples">
+              <thead>
+                <tr>
+                  <th>Aborisha Name</th>
+                  <th>Obi Pele Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Oshun Kemi</td>
+                  <td>Obi Kemi</td>
+                </tr>
+                <tr>
+                  <td>Ogun Leve</td>
+                  <td>Obi Leve</td>
+                </tr>
+                <tr>
+                  <td>Shango Yemi</td>
+                  <td>Obi Yemi</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="small" style="margin-top:10px">
+            Example phrasing in a reading: “The Obi Yemi says…” • “The Obi Leve responds with…”
+          </p>
+
+          <div class="hr"></div>
+
+          <div class="note">
+            <b>Module purpose:</b> to facilitate the interaction between the Aborisha, the Obi Pele,
+            and divine inclination—towards clarity, alignment, and ethical guidance.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DETAILS GRID -->
+    <section class="grid" aria-label="Course details">
+      <div class="card">
+        <div class="sectionTitle">
+          <h3>What You’ll Do</h3>
+          <span>practice + documentation</span>
+        </div>
+        <ul>
+          <li>Learn the foundational “Yes / Maybe / No” outcomes from 4-cowrie.</li>
+          <li>Transition into Obi Abata / Obi Pele patterns and attachments.</li>
+          <li>Cast <b>16x daily</b>, record the pattern, and write a short interpretation.</li>
+          <li>Submit photos + findings for feedback.</li>
+          <li>Use a support chart to validate meaning + ethical direction.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="sectionTitle">
+          <h3>Ideal For</h3>
+          <span>who this serves</span>
+        </div>
+        <ul>
+          <li>Beginners ready to move beyond basic “4-cowrie only” readings.</li>
+          <li>Iyawos and devotees who want structured divination discipline.</li>
+          <li>Students preparing for a novice-level divination credential.</li>
+          <li>Anyone who needs ethical question framing and consistent outcomes.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- WEEKLY PLAN -->
+    <section class="card topAnchor" id="weeks" style="margin-top:14px">
+      <div class="sectionTitle">
+        <h3>3-Week Plan</h3>
+        <span>weekly milestones</span>
+      </div>
+
+      <div class="weeks">
+        <div class="week">
+          <h4>Week 1 — Foundations (4-Cowrie Basics + Daily Discipline)</h4>
+          <div class="badgeRow">
+            <span class="badge ok"><b>Daily</b> casting</span>
+            <span class="badge"><b>Submit</b> pics + findings</span>
+            <span class="badge"><b>Zoom</b> session</span>
+          </div>
+          <ul>
+            <li>Introduction & orientation</li>
+            <li>4-cowrie meanings and core outcomes</li>
+            <li>Cast 16x daily; submit photo + interpretation</li>
+            <li>Live Zoom review + Q&A</li>
+          </ul>
+          <p class="muted" style="margin:10px 0 0">
+            Typical focus outcomes: <b>Alafia</b> (Yes), <b>Etawa</b> (Maybe/struggle),
+            <b>Ejife</b> (Definitely yes), <b>Okana</b> (Doubtful), <b>Oyeku</b> (No).
+          </p>
+        </div>
+
+        <div class="week">
+          <h4>Week 2 — Obi Abata System (Attachments + Expanded Patterns)</h4>
+          <div class="badgeRow">
+            <span class="badge ok"><b>Daily</b> casting</span>
+            <span class="badge warn"><b>Upgrade</b> interpretation</span>
+            <span class="badge"><b>Zoom</b> session</span>
+          </div>
+          <ul>
+            <li>Obi Abata elements and “attachments” framework</li>
+            <li>Pattern recognition: moving from simple outcomes to structured variants</li>
+            <li>Cast 16x daily; submit photo + meaning</li>
+            <li>Zoom: troubleshooting, ethics, and clarity of question</li>
+          </ul>
+          <p class="muted" style="margin:10px 0 0">
+            Expanded study outcomes may include: <b>Ogbe</b>, <b>Obita</b>, <b>Akita</b>,
+            <b>Aje</b>, <b>Ilera</b>, <b>Akoran</b>, <b>Ero</b>, <b>Ejire</b>.
+          </p>
+        </div>
+
+        <div class="week">
+          <h4>Week 3 — Deities + Application (Readiness & Certification)</h4>
+          <div class="badgeRow">
+            <span class="badge ok"><b>Daily</b> casting</span>
+            <span class="badge"><b>Deities</b> (Orisha context)</span>
+            <span class="badge bad"><b>Assessment</b> readiness</span>
+          </div>
+          <ul>
+            <li>Deities/Orisha context applied to interpretation</li>
+            <li>Ethics: appropriate directives and responsible guidance</li>
+            <li>Sample questions used to assess readiness</li>
+            <li>Zoom: final review + next steps</li>
+          </ul>
+          <p class="muted" style="margin:10px 0 0">
+            End-of-course: sample question set + review of documented castings.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATION -->
+    <section class="grid topAnchor" id="cert" aria-label="Certification section">
+      <div class="card">
+        <div class="sectionTitle">
+          <h3>Certification Eligibility</h3>
+          <span>Novice Diviner</span>
+        </div>
+        <ul>
+          <li>Consistent daily casting documentation (photo + written meaning).</li>
+          <li>Ability to reframe unclear questions ethically.</li>
+          <li>Correct identification of key outcomes and patterns.</li>
+          <li>Demonstrated understanding of directives (ethics) and context.</li>
+          <li>Participation in weekly Zoom review sessions.</li>
+        </ul>
+        <div class="hr"></div>
+        <div class="note">
+          <b>Application:</b> Students may apply for certification as <b>“Novice Diviner”</b> upon completion and review.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="sectionTitle">
+          <h3>Support Chart Usage</h3>
+          <span>validation tool</span>
+        </div>
+        <ul>
+          <li>Reference patterns (elements skyward/earthward) to confirm meaning.</li>
+          <li>Use ethical directives to guide “what to do next” responsibly.</li>
+          <li>Connect outcomes to Orisha influences as context—not superstition.</li>
+          <li>When outcomes are doubtful (e.g., Okana), reframe the question.</li>
+        </ul>
+        <div class="hr"></div>
+        <p class="muted" style="margin:0">
+          This course emphasizes <b>repeatable practice</b>, <b>documented results</b>, and <b>ethical clarity</b>.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="fine">© <span id="y"></span> SwamiG Institute • Divination Mini Series</div>
+      <div class="fine">Governed by Tehuti (+) Irete</div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
