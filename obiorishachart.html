@@ -1,0 +1,322 @@
+<!-- =========================================================
+ SGI — Obi Orisha Chart (Simple Table)
+ Single-file HTML (static). Works on GitHub Pages / Cloudflare Pages.
+ File: sgi-obi-orisha-chart.html
+
+ Notes:
+  - Put this file in the SAME folder as: SwamiG.gif  (SGI logo)
+  - Logo is clickable and links to https://swamiginstitute.com
+========================================================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#0b0b0f" />
+  <title>SwamiG Institute — Obi Orisha Chart</title>
+  <meta name="description" content="SwamiG Institute (SGI) — Obi Orisha Chart (simple table) with female/male composition." />
+
+  <style>
+    :root{
+      --bg:#0b0b0f; --ink:#f3f4f6; --muted:#bfc3d1;
+      --card:rgba(20,20,28,.92); --soft:rgba(255,255,255,.06);
+      --border:rgba(255,255,255,.12);
+      --accent:#bb66ff; --accent2:#ffd166;
+      --ring:rgba(187,102,255,.35);
+      --ok:#4ade80; --warn:#fbbf24;
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+      --max: 1100px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; background:
+        radial-gradient(1000px 500px at 20% -10%, rgba(187,102,255,.20), transparent 60%),
+        radial-gradient(900px 520px at 90% 0%, rgba(255,209,102,.14), transparent 55%),
+        radial-gradient(900px 600px at 50% 110%, rgba(255,255,255,.08), transparent 55%),
+        var(--bg);
+      color:var(--ink);
+      font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px 16px 54px}
+    header{
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      padding:14px 14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; text-decoration:none;
+      padding:10px 12px; border-radius:999px;
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    .brand img{
+      width:40px; height:40px; object-fit:contain;
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,.35));
+    }
+    .brand .t{
+      display:flex; flex-direction:column; gap:1px;
+      line-height:1.15;
+    }
+    .brand .t strong{font-size:14px; letter-spacing:.2px}
+    .brand .t span{font-size:12px; color:var(--muted)}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px; border-radius:999px;
+      background:linear-gradient(180deg, rgba(187,102,255,.22), rgba(187,102,255,.10));
+      border:1px solid rgba(187,102,255,.35);
+      text-decoration:none;
+      box-shadow: 0 10px 30px rgba(0,0,0,.18);
+      font-weight:650;
+      white-space:nowrap;
+    }
+    .pill i{
+      width:10px; height:10px; border-radius:50%;
+      background:var(--accent2);
+      box-shadow:0 0 0 6px rgba(255,209,102,.15);
+    }
+
+    .hero{
+      margin-top:14px;
+      padding:22px 18px;
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border:1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .hero h1{
+      margin:0 0 6px;
+      font-size:24px;
+      letter-spacing:.2px;
+    }
+    .hero p{margin:0; color:var(--muted)}
+    .grid{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:14px;
+    }
+    @media (max-width: 900px){
+      .grid{grid-template-columns:1fr}
+      header{flex-wrap:wrap}
+    }
+
+    .card{
+      padding:18px;
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(20,20,28,.92), rgba(20,20,28,.86));
+      border:1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .card h2{
+      margin:0 0 10px;
+      font-size:16px;
+      letter-spacing:.2px;
+    }
+    .note{
+      margin:0 0 12px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      overflow:hidden;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.03);
+    }
+    thead th{
+      text-align:left;
+      font-size:12px;
+      letter-spacing:.3px;
+      text-transform:uppercase;
+      color:var(--muted);
+      padding:12px 12px;
+      background:rgba(255,255,255,.04);
+      border-bottom:1px solid var(--border);
+    }
+    tbody td{
+      padding:12px 12px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      vertical-align:top;
+    }
+    tbody tr:last-child td{border-bottom:none}
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      font-size:12px;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 0 5px rgba(187,102,255,.15);
+    }
+    .sig{
+      margin-top:12px;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px dashed rgba(255,255,255,.16);
+      background:rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .sig strong{color:var(--ink)}
+    .legend{
+      display:grid; gap:10px;
+    }
+    .legend .item{
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.03);
+    }
+    .legend .item b{display:block; margin-bottom:4px}
+    .legend .item small{color:var(--muted)}
+    footer{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:12px;
+      text-align:center;
+      opacity:.9;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <!-- Linked Logo -->
+      <a class="brand" href="https://swamiginstitute.com" target="_blank" rel="noopener">
+        <img src="SwamiG.gif" alt="SwamiG Institute Logo" />
+        <div class="t">
+          <strong>SwamiG Institute</strong>
+          <span>Obi Orisha Chart</span>
+        </div>
+      </a>
+
+      <a class="pill" href="https://swamiginstitute.com" target="_blank" rel="noopener" aria-label="Visit SwamiGInstitute.com">
+        <i></i> swamiginstitute.com
+      </a>
+    </header>
+
+    <section class="hero">
+      <h1>Obi Orisha Chart</h1>
+      <p>Simple reference table with <b>female/male composition</b> and associated Orisha (SGI format).</p>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Chart Table</h2>
+        <p class="note">Counts shown as “Up”. Composition reflects your rules (F/M). Orisha list is as provided.</p>
+
+        <table aria-label="Obi Orisha Chart table">
+          <thead>
+            <tr>
+              <th style="width:110px;">Count</th>
+              <th style="width:140px;">Obi Name</th>
+              <th style="width:220px;">Composition</th>
+              <th>Associated Orisha</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tag"><span class="dot"></span>4 up</span></td>
+              <td><b>Ogbe</b></td>
+              <td>— (all open)</td>
+              <td>Obatala</td>
+            </tr>
+            <tr>
+              <td><span class="tag"><span class="dot"></span>3 up</span></td>
+              <td><b>Obita</b></td>
+              <td>2 Female / 1 Male</td>
+              <td>Oshun, Yemojah, Oya</td>
+            </tr>
+            <tr>
+              <td><span class="tag"><span class="dot"></span>3 up</span></td>
+              <td><b>Akita</b></td>
+              <td>1 Female / 2 Male</td>
+              <td>Ogun, Shango, Ochoosi</td>
+            </tr>
+            <tr>
+              <td><span class="tag"><span class="dot"></span>2 up</span></td>
+              <td><b>Ero</b></td>
+              <td>2 Female</td>
+              <td>Oshun, Egun, Oya</td>
+            </tr>
+            <tr>
+              <td><span class="tag"><span class="dot"></span>2 up</span></td>
+              <td><b>Ejire</b></td>
+              <td>1 Male / 1 Female</td>
+              <td>Obatala, Yemojah</td>
+            </tr>
+            <tr>
+              <td><span class="tag"><span class="dot"></span>2 up</span></td>
+              <td><b>Akoran</b></td>
+              <td>2 Male</td>
+              <td>Shango, Eshu</td>
+            </tr>
+            <tr>
+              <td><span class="tag"><span class="dot"></span>1 up</span></td>
+              <td><b>Aje</b></td>
+              <td>1 Female</td>
+              <td>Yemojah, Iyami</td>
+            </tr>
+            <tr>
+              <td><span class="tag"><span class="dot"></span>1 up</span></td>
+              <td><b>Ilera</b></td>
+              <td>1 Male</td>
+              <td>Obatala, Ogun</td>
+            </tr>
+            <tr>
+              <td><span class="tag"><span class="dot"></span>0 up</span></td>
+              <td><b>Oyeku</b></td>
+              <td>— (all closed)</td>
+              <td>Eshu</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="sig">
+          <strong>Signature:</strong> Tehuti (+) / Irete
+        </div>
+      </div>
+
+      <aside class="card">
+        <h2>Quick Notes</h2>
+        <div class="legend">
+          <div class="item">
+            <b>How to use</b>
+            <small>Use the “Count (Up)” result to locate the row, then read the Obi name, composition, and associated Orisha.</small>
+          </div>
+          <div class="item">
+            <b>Composition key</b>
+            <small>Female/Male indicates the energetic polarity count you specified for each sign.</small>
+          </div>
+          <div class="item">
+            <b>SGI deployment</b>
+            <small>Save this file as <b>sgi-obi-orisha-chart.html</b> in the same repo/folder as <b>SwamiG.gif</b>.</small>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <footer>
+      © <span id="y"></span> SwamiG Institute • Obi Orisha Chart (Reference)
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
